@@ -1,0 +1,27 @@
+Excellent work Ben. Great progress.
+
+My intention for this assignment, is for students to use the same tools we’ve already developed (except for the UDP part). One design, then would be to include a SERVER on the CLIENT. And a CLIENT on the SERVER. This way, when you have something to send back from the application (normal) server to the (normal) client, you use the client that is part of the server to connect back to the server that is part of the client. Then you transfer your response back to the application client in that way.
+
+So it would look something like:
+
+Connect to the server, Send the request. Break the connection.
+Later, connect back to the client. Send the response. Break the connection.
+Repeat
+
+If you get the above running, you have an asynchronous system.
+
+To meet the full specs for the assignment, I believe there is a further part:
+
+
+Connect to the server, Send the request. Break the connection.
+DO SOME STUFF WITH THE USER ON THE CLIENT WHILE WAITING.
+Later, connect back to the client. Send the response. Break the connection.
+Repeat
+
+Typically the “doing stuff” would be in a loop, and at the end of the loop body you check to see if there is any response from the server. If so, handle it.
+
+I have had students use UDP because in addition to learning about UDP, we can do away with the “break the connection” step, because UDP does not use a connection, it just sends packets on their way and hopes they arrive.
+
+Does this make sense? Does it look familiar?
+
+-ce
